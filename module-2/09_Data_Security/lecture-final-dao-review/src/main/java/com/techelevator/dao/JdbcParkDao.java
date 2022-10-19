@@ -58,6 +58,34 @@ public class JdbcParkDao implements ParkDao {
 
     }
 
+    public Park getPark(String parkName) {
+
+        //Step 1 - declare the variable we want to return
+        Park park = null;
+
+        //Step 2 - write out our sql and store it in a string
+        String sql = "SELECT park_id, park_name, date_established, area, has_camping " +
+                "FROM park " +
+                "WHERE park_name ILIKE ? ;";
+
+        //Step 3 - send the sql to the database and store results if necessary
+        //String searchTerm = parkName + "%"; // only searches where park name BEGINS with parkName
+        //String searchTerm = "%" + parkName ; // only searches where park name ENDS with parkName
+        String searchTerm = "%" + parkName + "%"; // only searches where park name CONTAINS parkName
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, searchTerm);
+
+        //Step 4 - map the results to the variable we declared in step 1
+        while(results.next()){
+            park = mapRowToPark(results);
+
+        }
+
+        //Step 5 - return the result
+        return park;
+
+    }
+
     @Override
     public List<Park> getParksByState(String stateAbbreviation) {
         //Step 1 - declare the return type
