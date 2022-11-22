@@ -58,7 +58,6 @@ export default {
     name: 'product-review',
     data() {
         return {
-            myText: "Hello World",
             name: "Ghost Hunting For Dummies",
             description: "Learn how to hunt ghosts like the professionals!",
             reviews : [
