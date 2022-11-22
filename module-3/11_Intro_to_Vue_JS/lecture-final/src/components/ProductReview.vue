@@ -29,7 +29,7 @@
           </div>
        </div>
       <!-- this is how we do a conditional class -->
-      <div class="review" 
+      <div class="review" v-bind:title="review.title.length > 15 ? review.title.substring(0,10) : review.title"
             v-bind:class="{classFavorited: review.favorite}" 
             v-for="review in reviews" v-bind:key="review.reviewer">
             <h4>{{review.reviewer}}</h4>
