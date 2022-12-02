@@ -27,9 +27,19 @@ export default {
     },
     methods: {
         saveReporter(){
-            ReporterService.saveReporter(this.reporter).then(
+           
+            ReporterService.saveReporter(this.reporter)
+            .then(
                 (response) => {
                         alert(response.status);
+                }
+            )
+            .catch(
+                (error) => {
+                    alert("an error occurred");
+                    if(error.response) {
+                        alert(error.response.statusText)
+                    }
                 }
             )
         }

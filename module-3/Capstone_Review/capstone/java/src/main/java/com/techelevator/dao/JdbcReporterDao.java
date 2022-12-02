@@ -66,7 +66,8 @@ public class JdbcReporterDao implements ReporterDao {
     public Reporter createReporter(Reporter reporter){
 
         //Step 1 - declare the return type
-
+        String name = null;
+        String name2 = name.toLowerCase();
 
         //Step 2 - create the sql
         String sql = "INSERT INTO reporter(reporter_name, location, age ) " +
